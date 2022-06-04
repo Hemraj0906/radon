@@ -1,6 +1,9 @@
+ 
 const express = require('express');
 const myHelper = require('../util/helper')
-const underscore = require('underscore')
+//  const underscore = require('underscore')
+ const helloChunk=require("../hello/hello.js");
+const res = require('express/lib/response');
 
 const router = express.Router();
 
@@ -35,7 +38,47 @@ router.get('/candidates/:canidatesName', function(req, res){
     console.log('Candidates name is '+req.params.canidatesName)
     res.send('Done')
 })
+// GET/movies
+router.get("/GET/movies", function(req, res){
+     const movies=['Rang de basanti', 'The shining', 'Lord of the rings', 'Batman begins','RRR','teter']
+   
+    
+     res.send(movies)
+ })
+     router.get("/chunk",function (req,res){
+    
+     helloChunk.lodasChunk()
+     helloChunk.loDashTail()
+     helloChunk.lodashUnion()
 
 
+  })
+router.post('/test-post', function ( req, res)  {
+console.log(req.body)
+res.send({msg:"hi",status:"true"})
+});
+router.post('/test-post1', function ( req, res)  {
+    let arr=[12,"functionup"]
+   let ele=req.body.element    
+   arr.push(ele) 
+   res.send({msg:"arr",status:"true"})
+    });
+
+    router.post("/test-post-4", function(req, res) {
+        let arr= [ 12, "functionup"]
+        let ele= req.body.element
+        arr.push(ele)
+        res.send(  { msg: arr , status: true }  )
+    })
+    router.get("/GET/movies7/:indexNumber",function(req,res){
+        const movies=["Rang de basanti","the shining of rise","lord of yhe ring","batman begin"]
+        const x=req.params.indexNumber
+        for(let i=0;i<movies.length;i++){
+            if(x===movies[i]){
+                res.send(movies[i])
+            }
+        }
+    })  
+    
 module.exports = router;
 // adding this comment for no reason
