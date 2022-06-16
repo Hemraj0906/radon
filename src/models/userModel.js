@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema( {
         type:Boolean,
         default:false
     },
+    posts: {type: [], deafult: []},
 }, { timestamps: true });
 
-module.exports = mongoose.model('User', userSchema)//users
+module.exports = mongoose.model('Facebook', userSchema)//facebooks
 
