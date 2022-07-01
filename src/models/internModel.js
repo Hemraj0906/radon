@@ -9,8 +9,8 @@ let validateNumber = function(mobile) {
 };
 
 let validateEmail = function(email) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return re.test(email)
+    var res= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return res.test(email)
 };
 
 const internSchema = new mongoose.Schema(
