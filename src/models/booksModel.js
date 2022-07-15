@@ -45,6 +45,7 @@ const bookSchema = new mongoose.Schema({
     },
     deletedAt: { type: Date},
      __v: { type: Number, select: false},
+     bookcover:{type:String},  //awskeyline
 
 }, { timestamps: true });
 

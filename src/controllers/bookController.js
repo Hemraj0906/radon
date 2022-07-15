@@ -5,7 +5,11 @@ const validator = require('validator')
 
 const createBook = async function (req, res) {
     try {
+        
+
         const data = req.body;
+        let xyz=req.xyz      //awsline
+        data.bookcover=xyz    //awsline
         data.title = data.title.trim().split(" ").filter(word => word).join(" ");
         data.excerpt = data.excerpt.trim().split(" ").filter(word => word).join(" ");
         data.reviews = 0

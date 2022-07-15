@@ -1,6 +1,7 @@
 //===============================express importing=============================================//
 const express =require('express')
 const router=express.Router()
+const {uploadParam}=require("../aws")//awsline
 //=================================user logic importing========================================//
 const {checkCreate, checkLogin}=require('../validator/uservalidation')
 const {createUser, userLogin} =require('../controllers/userController')
@@ -8,7 +9,7 @@ const {createUser, userLogin} =require('../controllers/userController')
 const {authentication}=require('../middlewares/auth')
 //=================================book logic importing===================================//
 const bookvalidation=require('../validator/bookvalidation')
-const {createBook,getBookbyQuerry,bookDetail,updateBook,deleteBookbyPath}=require('../controllers/bookController')
+const {createBook,getBookbyQuerry,bookDetail,updateBook,deleteBookbyPath,}=require('../controllers/bookController')
 //================================review logic importing==================================//
 const {createReview,updateReview,deleteReview } =require('../controllers/reviewController')
 const{reviewCheck}=require("../validator/reviewvalidation")
@@ -26,7 +27,7 @@ router.post('/login',checkLogin,userLogin)
 
 //================================routes for books============================================================//
        //<-------------------book create------------------------->//
-router.post('/books',authentication,bookvalidation,createBook)
+router.post('/books',authentication,bookvalidation,uploadParam,createBook)//awsline-uploaparam controller with jwt token
        //<------------------get book-------------------------->//
 router.get('/books',authentication,getBookbyQuerry)
        //<-----------------get book by bookId-------------->//
